@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { from, of } from 'rxjs';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 
 @Component({
   selector: 'app-root',
@@ -7,29 +8,40 @@ import { from, of } from 'rxjs';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title(title: any) {
-    throw new Error('Method not implemented.');
+  
+  
+  @ViewChild(ShoppingListComponent) childComp: ShoppingListComponent 
+
+  msg: string;
+  isVisible = false
+  parentMessage = "Message From parent"
+
+  msgFn() {
+    this.isVisible= !this.isVisible
+    this.msg = this.childComp.getMessage()
+    console.log(this.msg)
   }
- constructor () {
-
-  const promise1 = new Promise((resolve) => {
-setTimeout(() => {
-  resolve('Resolved!')
-}, 4000)
-  })
-
-  const message$ = from(promise1)
-
-  message$.subscribe((message) => {
-    console.log('message:', message)
-  })
-
-  const numbers$ = of([1,2,3,4,5])
-
-  numbers$.subscribe((data) => {
-    console.log(data, '...')
-  })
-
- }
+  
+  constructor () {
+    
+    const promise1 = new Promise((resolve) => {
+      setTimeout(() => {
+        resolve('Resolved!')
+      }, 4000)
+    })
+    
+    const message$ = from(promise1)
+    
+    message$.subscribe((message) => {
+      console.log('message:', message)
+    })
+    
+    const numbers$ = of([1,2,3,4,5])
+    
+    numbers$.subscribe((data) => {
+      console.log(data, '...')
+    })
+    
+  }
   
 }

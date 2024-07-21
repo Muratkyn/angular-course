@@ -5,6 +5,11 @@
     <hr>
     <app-header></app-header>
     <!-- app.component.html -->
+    <app-shopping-list [msgParent]="parentMessage">
+      
+    </app-shopping-list>
+    <button (click)="msgFn()">Click me</button>
+    <h3 *ngIf="isVisible">{{msg}}</h3>
 <div>
   </div>
   

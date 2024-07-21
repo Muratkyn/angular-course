@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-shopping-list',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrl: './shopping-list.component.css'
 })
 export class ShoppingListComponent {
+
+  getMessage() {
+    return "This is a message from child component"
+  }
+
+  @Input() msgParent: string;
 
 }
