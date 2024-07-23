@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-shopping-list',
@@ -7,10 +7,13 @@ import { Component, Input } from '@angular/core';
 })
 export class ShoppingListComponent {
 
-  getMessage() {
-    return "This is a message from child component"
-  }
+  message = "hello world!"
+ 
+@Output() eventMessage = new EventEmitter()
 
-  @Input() msgParent: string;
+sendMessage() {
+  this.eventMessage.emit(this.message)
+}
+  
 
 }

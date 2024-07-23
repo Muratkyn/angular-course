@@ -5,11 +5,17 @@
     <hr>
     <app-header></app-header>
     <!-- app.component.html -->
-    <app-shopping-list [msgParent]="parentMessage">
+    <app-shopping-list (eventMessage)="getMessage($event)">
       
     </app-shopping-list>
     <button (click)="msgFn()">Click me</button>
+    <h2 [style.color]="msgColor">{{msg}}</h2>
     <h3 *ngIf="isVisible">{{msg}}</h3>
+    <h3>{{newMessage}}</h3>
+    <input type="text" (keyup.enter)="onEnter(userName.value)" #userName>
+    <h2>{{helloAng}}</h2>
+    <input type="text" [(ngModel)]="subtitle">
+    <h4>{{subtitle}}</h4>
 <div>
   </div>
   

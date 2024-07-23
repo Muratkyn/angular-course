@@ -12,14 +12,28 @@ export class AppComponent {
   
   @ViewChild(ShoppingListComponent) childComp: ShoppingListComponent 
 
-  msg: string;
+  newMessage:string;
+  msg: string = 'hi there';
   isVisible = false
   parentMessage = "Message From parent"
+  nativeElement: any;
+  msgColor = 'black'
+  helloAng:string;
+  subtitle: string;
+ 
+  onEnter(userName) {
+    this.helloAng = userName
+  }
 
   msgFn() {
+    this.msgColor =  'red'
     this.isVisible= !this.isVisible
-    this.msg = this.childComp.getMessage()
     console.log(this.msg)
+  }
+
+  getMessage($event:string) {
+
+  this.newMessage = $event
   }
   
   constructor () {
